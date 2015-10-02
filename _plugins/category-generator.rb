@@ -19,7 +19,7 @@ module Jekyll
       @site = site
       @base = base
       @dir = dir
-      @name = 'index.html'
+      @name = 'feed.xml'
 
       self.process(@name)
       self.read_yaml(File.join(base, '_layouts'), 'category-feed.html')
@@ -36,7 +36,7 @@ module Jekyll
       site.categories.each_key do |category|
         catdir = File.join(dir, category)
         site.pages << CategoryPage.new(site, site.source, catdir, category)
-        site.pages << CategoryFeedPage.new(site, site.source, File.join(catdir, "feed"), category)
+        site.pages << CategoryFeedPage.new(site, site.source, catdir, category)
       end
     end
   end

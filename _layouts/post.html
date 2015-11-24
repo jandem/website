@@ -12,7 +12,7 @@ layout: default
       {% for cat in page.categories %}
         <a href="/blog/category/{{cat}}/">{{cat}}</a>{%if cat != page.categories.last %}, {% endif %}
       {% endfor %}
-      &middot; <a href="{{ page.url | prepend: site.url }}/#disqus_thread">Comments</a>
+      &middot; <a href="{{ page.url | prepend: site.url }}#disqus_thread">Comments</a>
     </p>
   </header>
   <article class="post-content">
@@ -37,7 +37,7 @@ layout: default
     {% else %}
     var disqus_identifier = "{{page.url}}";
     {% endif %}
-    var disqus_url = "http://jandemooij.nl{{page.url}}/";
+    var disqus_url = "http://jandemooij.nl{{page.url}}";
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {

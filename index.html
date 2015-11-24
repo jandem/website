@@ -12,7 +12,7 @@ layout: default
 	{% for cat in post.categories %}
           <a href="/blog/category/{{cat}}/">{{cat}}</a>{%if cat != post.categories.last %}, {% endif %}
 	{% endfor %}
-      &middot; <a href="{{ post.url | prepend: site.url }}/#disqus_thread">Comments</a>
+      &middot; <a href="{{ post.url | prepend: site.url }}#disqus_thread">Comments</a>
 	</span>
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>

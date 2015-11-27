@@ -50,7 +50,7 @@ Until last week, here's how this worked in SpiderMonkey:
 * Each `this` expression in JS code resulted in a single bytecode op (JSOP_THIS),
 * This bytecode op *boxed* the frame's this-argument if needed and then returned the result.
 
-Special case: to support the [lexical this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#Lexical_this) behavior of arrow functions, we emitted JSOP\_THIS when we defined (cloned) the arrow function and then copied the result to a slot on the function. Inside the arrow function, JSOP\_THIS would then simply [load the value from that slot](/blog/2014/04/11/fast-arrow-functions-in-firefox-31/).
+Special case: to support the [lexical this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#Lexical_this) behavior of arrow functions, we emitted JSOP\_THIS when we defined (cloned) the arrow function and then copied the result to a slot on the function. Inside the arrow function, JSOP\_THIS would then [load the value from that slot](/blog/2014/04/11/fast-arrow-functions-in-firefox-31/).
 
 There was some more complexity around `eval`: eval-frames also had their own this-slot, so whenever we did a direct `eval` we'd ensure the outer frame had a boxed (if needed) this-value and then we'd copy it to the eval frame.
 
@@ -86,7 +86,7 @@ To fix these issues, I made `this` a real binding:
 * In the function prologue, we get the this-argument, box it if needed (with a new op, JSOP_FUNCTIONTHIS) and store it in `.this`,
 * Then we simply use that variable each time `this` is used.
 
-Arrow functions and eval frames no longer have their own this-slot, they simply reference the `.this` variable of the outer function. For instance, consider the function below:
+Arrow functions and eval frames no longer have their own this-slot, they just reference the `.this` variable of the outer function. For instance, consider the function below:
 
 ```js
 function f() {
@@ -107,7 +107,7 @@ I decided to call this variable `.this`, because it nicely matches the other mag
 
 Doing it this way has a number of benefits: we only have to check for primitive `this` values at the start of the function, instead of each time `this` is accessed (although in most cases our optimizing JIT could/can eliminate these checks, when it knows the this-argument must be an object). Furthermore, we no longer have to do anything special for arrow functions or eval; they simply access a 'variable' in the enclosing scope and the engine already knows how to do that.
 
-In the global scope (and in eval or arrow functions in the global scope), we don't use a binding for `this` (I tried this initially but it turned out to be pretty complicated). There we simply emit JSOP_GLOBALTHIS for each this-expression, then that op gets the `this` value from a reserved slot on the lexical scope. This global `this` value never changes, so the JITs can simply get it from the global lexical scope at compile time and bake it in as a constant :) (Well.. in most cases. The embedding can run scripts with a non-syntactic scope chain, in that case we have to do a scope walk to find the nearest lexical scope. This should be uncommon and can be optimized/cached if needed.)
+In the global scope (and in eval or arrow functions in the global scope), we don't use a binding for `this` (I tried this initially but it turned out to be pretty complicated). There we emit JSOP_GLOBALTHIS for each this-expression, then that op gets the `this` value from a reserved slot on the lexical scope. This global `this` value never changes, so the JITs can get it from the global lexical scope at compile time and bake it in as a constant :) (Well.. in most cases. The embedding can run scripts with a non-syntactic scope chain, in that case we have to do a scope walk to find the nearest lexical scope. This should be uncommon and can be optimized/cached if needed.)
 
 ### The Debugger
 The main nuisance was fixing the debugger: because we only give (non-arrow) functions that use `this` or `eval` their own this-binding, what do we do when the debugger wants to know the this-value of a frame *without* a this-binding?

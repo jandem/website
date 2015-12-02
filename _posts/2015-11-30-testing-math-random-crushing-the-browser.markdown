@@ -6,13 +6,13 @@ categories: mozilla
 ---
 (For **tl;dr**, see the Conclusion.)
 
-A few days ago, [I wrote about](/blog/2015/11/27/math-random-and-32-bit-precision/) Math.random() implementations in Safari and (older versions of) Chrome using only 32 bits of precision. As I mentioned in that blog post, I've been [working on](https://bugzilla.mozilla.org/show_bug.cgi?id=322529) upgrading Math.random() in SpiderMonkey to XorShift128+. V8 has been using the same algorithm since last week.
+A few days ago, [I wrote about](/blog/2015/11/27/math-random-and-32-bit-precision/) Math.random() implementations in Safari and (older versions of) Chrome using only 32 bits of precision. As I mentioned in that blog post, I've been [working on](https://bugzilla.mozilla.org/show_bug.cgi?id=322529) upgrading Math.random() in SpiderMonkey to XorShift128+. V8 has been using the same algorithm since last week. (Update Dec 1: WebKit is now [also using](https://bugs.webkit.org/show_bug.cgi?id=151641) XorShift128+!)
 
 The most extensive RNG test is [TestU01](http://simul.iro.umontreal.ca/testu01/tu01.html). It's a bit of a pain to run: to test a custom RNG, you have to compile the library and then link it to a test program. I did this initially for the SpiderMonkey shell but after that I thought it'd be more interesting to use [Emscripten](http://emscripten.org/) to compile TestU01 to asm.js so we can easily run it in different browsers.
 
 Today I [tried this](https://github.com/jandem/TestU01.js) and even though I had never used Emscripten before, I had it running in the browser in less than an hour. Because the tests can take a long time, it runs in a web worker. You can [try it for yourself here](https://jandem.github.io/TestU01.js/test.htm).
 
-I also wanted to test [window.crypto.getRandomValues()](https://developer.mozilla.org/nl/docs/Web/API/window.crypto.getRandomValues) but unfortunately it's not available [in workers](https://bugzilla.mozilla.org/show_bug.cgi?id=842818).
+I also wanted to test [window.crypto.getRandomValues()](https://developer.mozilla.org/en/docs/Web/API/window.crypto.getRandomValues) but unfortunately it's not available [in workers](https://bugzilla.mozilla.org/show_bug.cgi?id=842818).
 
 Disclaimer: browsers implement Math functions like Math.sin differently and this can affect their precision. I don't know if TestU01 uses these functions and whether it affects the results below, but it's possible. Furthermore, some test failures are intermittent so results can vary between runs.
 

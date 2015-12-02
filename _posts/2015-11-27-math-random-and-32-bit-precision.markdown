@@ -8,7 +8,7 @@ Last week, Mike Malone, CTO of [Betable](https://betable.com), wrote a very insi
 
 The article also mentioned the RNG we use in Firefox (it was copied from Java a long time ago) should be improved as well. I fully agree with this. In fact, the past days I've been [working on](https://bugzilla.mozilla.org/show_bug.cgi?id=322529) upgrading Math.random() in SpiderMonkey to XorShift128+, see [bug 322529](https://bugzilla.mozilla.org/show_bug.cgi?id=322529). We think XorShift128+ is a good choice: we already had a copy of the RNG in our repository, it's fast (even faster than our current algorithm!), and it passes BigCrush (the most complete RNG test available).
 
-While working on this, I looked at a number of different RNGs and noticed Safari/WebKit [uses GameRand](https://github.com/WebKit/webkit/blob/67985c34ffc405f69995e8a35f9c38618625c403/Source/WTF/wtf/WeakRandom.h#L104). It's extremely fast but **very** weak.
+While working on this, I looked at a number of different RNGs and noticed Safari/WebKit [uses GameRand](https://github.com/WebKit/webkit/blob/67985c34ffc405f69995e8a35f9c38618625c403/Source/WTF/wtf/WeakRandom.h#L104). It's extremely fast but **very** weak. (Update Dec 1: WebKit is now [also using](https://bugs.webkit.org/show_bug.cgi?id=151641) XorShift128+, so this doesn't apply to newer Safari/WebKit versions.)
 
 Most interesting to me, though, was that, like the previous V8 RNG, it has only 32 bits of precision: it generates a 32-bit unsigned integer and then divides that by `UINT_MAX + 1`. This means the result of the RNG is always one of about 4.2 billion different numbers, instead of 9007199 billion (2^53). In other words, it can generate 0.00005% of all numbers an ideal RNG can generate.
 

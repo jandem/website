@@ -37,7 +37,7 @@ layout: default
     {% else %}
     var disqus_identifier = "{{page.url}}";
     {% endif %}
-    var disqus_url = "http://jandemooij.nl{{page.url}}";
+    var disqus_url = "{{ page.url | prepend: site.url }}";
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {

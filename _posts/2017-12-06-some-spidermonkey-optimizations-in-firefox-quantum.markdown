@@ -56,7 +56,7 @@ Property iteration via for-in or Object.keys is pretty common, so I spent some t
 
 I also [rewrote the enumeration code](https://bugzilla.mozilla.org/show_bug.cgi?id=1373615) used by both for-in, Object.getOwnPropertyNames, etc to be much faster and simpler.
 
-# Minor GC triggers
+# MinorGC triggers
 In Firefox, when navigating to another page, we have a mechanism to "nuke" chrome -> content wrappers [to prevent bad memory leaks](https://blog.mozilla.org/nnethercote/2012/05/07/update-on-leaky-add-ons/). The code for this used to trigger a minor GC to evict the GC's nursery, in case there were nursery-allocated wrappers. These GCs showed up in profiles and it turned out that most of these evict-nursery calls were unnecessary, so I [fixed this](https://bugzilla.mozilla.org/show_bug.cgi?id=1370823).
 
 [According to Telemetry](https://groups.google.com/d/msg/mozilla.dev.telemetry-alerts/An9XoHhqoYM/AQ95iqRzCAAJ), this small patch eliminated *tons* of unnecessary minor GCs in the browser:
@@ -83,7 +83,7 @@ A lot of builtin functions were optimized. Here are just a few of them:
 * We unnecessarily delazified (triggering full parsing of) [thousands of functions](https://bugzilla.mozilla.org/show_bug.cgi?id=1357711) when loading Gmail.
 * Babel generates code that mutates `__proto__` and this used to deoptimize a lot of things. I [fixed a number of issues](https://bugzilla.mozilla.org/show_bug.cgi?id=1357680) in this area.
 * Cycle detection (for instance for JSON.stringify and Array.prototype.join) [now uses a Vector](https://bugzilla.mozilla.org/show_bug.cgi?id=1342345) instead of a HashSet. This is much faster in the common cases (and not that much slower in pathological cases).
-* I devirtualized some of our hottest functions [in the frontend](https://bugzilla.mozilla.org/show_bug.cgi?id=1359421) and [in our](https://bugzilla.mozilla.org/show_bug.cgi?id=1391611) Ion JIT [backend](https://bugzilla.mozilla.org/show_bug.cgi?id=1392530).
+* I devirtualized some of our hottest virtual functions [in the frontend](https://bugzilla.mozilla.org/show_bug.cgi?id=1359421) and [in our](https://bugzilla.mozilla.org/show_bug.cgi?id=1391611) Ion JIT [backend](https://bugzilla.mozilla.org/show_bug.cgi?id=1392530).
 
 # Conclusion
 SpiderMonkey performance has improved tremendously the past months, and hopefully there will be a lot more of this in 2018 :) If you find some real-world JS code that's much slower in Firefox than in other browsers, please let us know. Usually when we're significantly slower than other browsers it's because we're doing something silly and most of these bugs are not that hard to fix once we are aware of them.

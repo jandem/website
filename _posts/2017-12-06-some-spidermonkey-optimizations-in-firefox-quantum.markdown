@@ -86,6 +86,6 @@ A lot of builtin functions were optimized. Here are just a few of them:
 * I devirtualized some of our hottest virtual functions [in the frontend](https://bugzilla.mozilla.org/show_bug.cgi?id=1359421) and [in our](https://bugzilla.mozilla.org/show_bug.cgi?id=1391611) Ion JIT [backend](https://bugzilla.mozilla.org/show_bug.cgi?id=1392530).
 
 # Conclusion
-SpiderMonkey performance has improved tremendously the past months, and hopefully there will be a lot more of this in 2018 :) If you find some real-world JS code that's much slower in Firefox than in other browsers, please let us know. Usually when we're significantly slower than other browsers it's because we're doing something silly and most of these bugs are not that hard to fix once we are aware of them.
+SpiderMonkey performance has improved tremendously the past months and we're not stopping here. Hopefully there will be a lot more of this in 2018 :) If you find some real-world JS code that's much slower in Firefox than in other browsers, please let us know. Usually when we're significantly slower than other browsers it's because we're doing something silly and most of these bugs are not that hard to fix once we are aware of them.
 
 

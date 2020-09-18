@@ -1,0 +1,6 @@
+RewriteEngine On 
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://jandemooij.nl/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^www\.jandemooij\.nl$ [NC]
+RewriteRule ^(.*)$ https://jandemooij.nl/$1 [R=301,L]

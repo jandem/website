@@ -1,0 +1,17 @@
+base_url = "https://jandemooij.nl"
+title = "Jan de Mooij"
+
+compile_sass = false
+highlight_code = true
+build_search_index = false
+
+generate_feed = true
+feed_filename = "feed.xml"
+
+taxonomies = [ {name = "tags", rss = true} ]
+
+[extra]
+header_links = [
+    { url = "$BASE_URL/blog/", name = "Blog" },
+    { url = "$BASE_URL/about/", name = "About" },
+]

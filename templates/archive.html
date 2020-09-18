@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{{ section.content | safe }}
+
+
+<h2>All Posts</h2>
+<ol reversed class="postlist" style="counter-reset: start-from {{ section.pages | length + 1 }}">
+    {% for page in section.pages %}
+      <li class="postlist-item">
+        <a href="{{ page.permalink }}" class="postlist-link">{{ page.title }}</a>
+        <time class="postlist-date" datetime="{{ page.date }}">{{ page.date | date(format="%d %h %Y") }}</time>
+        {% if page.taxonomies.tags %}
+        {% for tag in page.taxonomies.tags %}
+            <a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}" class="post-tag">{{ tag }}</a>
+        {% endfor %}
+        {% endif %}
+      </li>
+    {% endfor %}
+</ol>
+{% endblock content %}

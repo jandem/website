@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }}{% endblock title %}
+
+{% block content %}
+
+<h1>{{ page.title }}</h1>
+<time class="postlist-date" datetime="{{ page.date }}">{{ page.date | date(format="%d %h %Y") }}</time>
+
+{% if page.taxonomies.tags %}
+{% for tag in page.taxonomies.tags %}
+    <a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}" class="post-tag">{{ tag }}</a>
+{% endfor %}
+{% endif %}
+
+{{ page.content | safe }}
+
+<hr>
+<ul>
+    {% if page.later %}
+        <li>Next: <a href="{{ page.later.permalink }}">{{ page.later.title }}</a></li>
+    {% endif %}
+
+    {% if page.earlier %}
+        <li>Previous: <a href="{{ page.earlier.permalink }}">{{ page.earlier.title }}</a></li>
+    {% endif %}
+</ul>
+{% endblock content %}

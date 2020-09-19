@@ -7,7 +7,7 @@
 <ol reversed class="postlist" style="counter-reset: start-from {{ term.pages | length + 1 }}">
     {% for page in term.pages %}
       <li class="postlist-item">
-        <a href="{{ page.permalink }}" class="postlist-link">{{ page.title }}</a>
+        <a href="{{ page.permalink }}" class="postlist-link">{{ page.title | markdown(inline=true) | safe }}</a>
         <time class="postlist-date" datetime="{{ page.date }}">{{ page.date | date(format="%d %h %Y") }}</time>
         {% if page.taxonomies.tags %}
         {% for tag in page.taxonomies.tags %}

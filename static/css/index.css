@@ -238,3 +238,9 @@ main table td, main table th {
 main table tbody tr:nth-child(odd) {
   background: #f2f2f1;
 }
+pre {
+  overflow: scroll;
+}
+img {
+  max-width: 100%;
+}

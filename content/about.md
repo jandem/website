@@ -3,10 +3,10 @@ template = "page.html"
 title = "About"
 date = 2020-09-19
 +++
-Hi there! I'm a software engineer at Mozilla. I work on SpiderMonkey, the JavaScript engine used in the Firefox web browser.
+Hi there! I'm a software engineer at Mozilla. I work on [SpiderMonkey](https://spidermonkey.dev), the JavaScript engine used in the Firefox web browser.
 
 I started contributing to SpiderMonkey back in 2010 while I was still in college. After I graduated, Mozilla hired me to do this full-time (2011).
-Since then I've worked on almost all parts of the JavaScript engine and also on various other parts of Firefox and Gecko.
+Since then I've worked on almost all parts of the JavaScript engine and also on various other Gecko components.
 I've been the module owner of the JIT module since July 2013.
 
 ## More

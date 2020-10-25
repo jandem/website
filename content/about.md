@@ -3,7 +3,18 @@ template = "page.html"
 title = "About"
 date = 2020-09-19
 +++
-Hi there! I'm Jan de Mooij. I work at Mozilla on SpiderMonkey, the JavaScript engine used in the Firefox web browser.
+Hi there! I'm a software engineer at Mozilla. I work on SpiderMonkey, the JavaScript engine used in the Firefox web browser.
 
-This website is powered by [Zola](https://www.getzola.org/), a static site generator written in Rust.
-The theme is based on [Eleventy's base-blog starter](https://github.com/11ty/eleventy-base-blog).
+I started contributing to SpiderMonkey back in 2010 while I was still in college. After I graduated, Mozilla hired me to do this full-time (2011).
+Since then I've worked on almost all parts of the JavaScript engine and also on various other parts of Firefox and Gecko.
+I've been the module owner of the JIT module since July 2013.
+
+## More
+* [hello@jandemooij.nl](mailto:hello@jandemooij.nl)
+* [LinkedIn](https://linkedin.com/in/jandem)
+* [Twitter](https://twitter.com/jandemooij)
+* [GitHub](https://github.com/jandem)
+
+<hr>
+
+This website is powered by [Zola](https://www.getzola.org/), a static site generator written in Rust. The theme is based on [Eleventy's base-blog starter](https://github.com/11ty/eleventy-base-blog).

@@ -1,33 +1,25 @@
-:root {
-  --red: #C5004A;
-  --darkred: #7F0036;
-  --lightgray: #e0e0e0;
-  --gray: #C0C0C0;
-  --darkgray: #333;
-  --navy: #17050F;
-  --blue: #082840;
-  --white: #fff;
-}
-* {
-  box-sizing: border-box;
-}
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: system-ui, sans-serif;
-  color: var(--darkgray);
-  background-color: var(--white);
+  color: #ccc;
+  background-color: #1e1e1e;
 }
 p:last-child {
   margin-bottom: 0;
 }
-p,
-a[href] {
-  color: var(--blue);
+p {
+  color: #ddd;
 }
-a[href]:visited {
-  color: var(--navy);
+a[href] {
+  color: #ddd;
+}
+a[href]:hover {
+  color: #aaa;
+}
+h1, h2, h3, h4 {
+  color: #ddd;
 }
 main {
   padding: 1rem;
@@ -36,7 +28,8 @@ main :first-child {
   margin-top: 0;
 }
 header {
-  border-bottom: 1px dashed var(--lightgray);
+  border-bottom: 1px dashed #333;
+  background-color: #151515;
 }
 header:after {
   content: "";
@@ -147,10 +140,11 @@ pre {
 .postlist-date,
 .postlist-item:before {
   font-size: 0.8125em;
-  color: var(--darkgray);
+  color: #aaa;
 }
 .postlist-link {
   font-size: 1.1em;
+  text-decoration-color: #888;
 }
 .postlist-item-active .postlist-link {
   font-weight: bold;
@@ -166,14 +160,13 @@ pre {
   text-transform: uppercase;
   font-size: 0.625em;
   padding: 2px 4px;
-  background-color: var(--red);
-  color: var(--white);
+  background-color: #2358bb;
   border-radius: 0.25em;
   text-decoration: none;
 }
 a[href].post-tag,
 a[href].post-tag:visited {
-  color: #fff;
+  color: #ddd;
 }
 
 /* Direct Links / Markdown Headers */

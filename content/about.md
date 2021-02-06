@@ -1,7 +1,6 @@
 +++
 template = "page.html"
 title = "About"
-date = 2020-09-19
 +++
 Hi there! I'm Jan de Mooij (he/him), I live in the Netherlands, and I'm a software engineer at Mozilla.
 

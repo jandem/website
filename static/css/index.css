@@ -3,23 +3,28 @@ body {
   padding: 0;
   margin: 0;
   font-family: system-ui, sans-serif;
-  color: #ccc;
   background-color: #1e1e1e;
+  color: #aaa;
 }
 p:last-child {
   margin-bottom: 0;
 }
 p {
-  color: #ddd;
+  color: #aaa;
 }
 a[href] {
   color: #ddd;
 }
+main a[href] {
+  color: #1b99dd;
+  text-decoration: none;
+}
 a[href]:hover {
-  color: #aaa;
+  color: #3ca8e2;
+  text-decoration: underline;
 }
 h1, h2, h3, h4 {
-  color: #ddd;
+  color: #bbb;
 }
 main {
   padding: 1rem;
@@ -125,7 +130,7 @@ pre {
   text-decoration: none;
 }
 .nav-item-active {
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: underline;
 }
 
@@ -136,21 +141,18 @@ pre {
 .postlist-item {
   margin-bottom: 0.8em;
   font-size: 0.9em;
+  line-height: 18px;
+  list-style-type: square;
 }
-.postlist-date,
-.postlist-item:before {
+.postlist-date {
   font-size: 0.8125em;
   color: #aaa;
 }
 .postlist-link {
   font-size: 1.1em;
-  text-decoration-color: #888;
-}
-.postlist-item-active .postlist-link {
-  font-weight: bold;
 }
 .postlist-link {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* Tags */
@@ -160,7 +162,7 @@ pre {
   text-transform: uppercase;
   font-size: 0.625em;
   padding: 2px 4px;
-  background-color: #2358bb;
+  background-color: #2c5bb1;
   border-radius: 0.25em;
   text-decoration: none;
 }
@@ -208,15 +210,18 @@ h2 + p {
 
 main table {
   border-collapse: collapse;
-  margin-bottom: 1em; }
-
+  margin-bottom: 1em;
+}
+main table th {
+  background-color: #151515;
+}
 main table td, main table th {
   border: 1px solid #ccc;
   padding: 3px;
   text-align: left;
 }
 main table tbody tr:nth-child(odd) {
-  background: #f2f2f1;
+  background: #333;
 }
 pre {
   overflow: scroll;

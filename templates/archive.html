@@ -6,17 +6,12 @@
 
 
 <h2>All Posts</h2>
-<ol reversed class="postlist">
+<ul class="postlist">
     {% for page in section.pages %}
-      <li class="postlist-item" value="{{ section.pages | length - loop.index0 }}">
-        <a href="{{ page.permalink }}" class="postlist-link">{{ page.title | markdown(inline=true) | safe }}</a>
-        <time class="postlist-date" datetime="{{ page.date }}">{{ page.date | date(format="%d %h %Y") }}</time>
-        {% if page.taxonomies.tags %}
-        {% for tag in page.taxonomies.tags %}
-            <a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}" class="post-tag">{{ tag }}</a>
-        {% endfor %}
-        {% endif %}
-      </li>
+    <li class="postlist-item">
+      <a href="{{ page.permalink }}" class="postlist-link">{{ page.title | markdown(inline=true) | safe }}</a><br>
+      <time class="postlist-date" datetime="{{ page.date }}">{{ page.date | date(format="%e %h %Y") }}</time>
+    </li>
     {% endfor %}
-</ol>
+</ul>
 {% endblock content %}

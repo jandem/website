@@ -216,7 +216,7 @@ main table th {
   background-color: #151515;
 }
 main table td, main table th {
-  border: 1px solid #ccc;
+  border: 1px solid #666;
   padding: 3px;
   text-align: left;
 }

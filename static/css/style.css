@@ -4,13 +4,10 @@ body {
   margin: 0;
   font-family: system-ui, sans-serif;
   background-color: #1e1e1e;
-  color: #aaa;
+  color: #afafaf;
 }
 p:last-child {
   margin-bottom: 0;
-}
-p {
-  color: #aaa;
 }
 a[href] {
   color: #ddd;
@@ -24,7 +21,7 @@ a[href]:hover {
   text-decoration: underline;
 }
 h1, h2, h3, h4 {
-  color: #bbb;
+  color: #ccc;
 }
 main {
   padding: 1rem;
@@ -33,7 +30,6 @@ main :first-child {
   margin-top: 0;
 }
 header {
-  border-bottom: 1px dashed #333;
   background-color: #151515;
 }
 header:after {

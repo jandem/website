@@ -9,9 +9,8 @@ Since then I've worked on almost all parts of the JavaScript engine and also on 
 I've been the module owner of the JIT module since July 2013.
 
 ## Contact
-* [hello@jandemooij.nl](mailto:hello@jandemooij.nl)
-* [LinkedIn](https://linkedin.com/in/jandem)
-* [Twitter](https://twitter.com/jandemooij)
+* E-mail: [hello@jandemooij.nl](mailto:hello@jandemooij.nl)
+* Mastodon: [@jandem@mastodon.social](https://mastodon.social/@jandem)
 
 <hr>
 

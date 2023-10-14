@@ -16,5 +16,4 @@ highlight_theme = "two-dark"
 [extra]
 header_links = [
     { url = "$BASE_URL/blog/", name = "Blog" },
-    { url = "$BASE_URL/about/", name = "About" },
 ]

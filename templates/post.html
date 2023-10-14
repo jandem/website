@@ -17,12 +17,12 @@
 
 <hr>
 <ul>
-    {% if page.later %}
-        <li>Next: <a href="{{ page.later.permalink }}">{{ page.later.title }}</a></li>
+    {% if page.higher %}
+        <li>Next: <a href="{{ page.higher.permalink }}">{{ page.higher.title }}</a></li>
     {% endif %}
 
-    {% if page.earlier %}
-        <li>Previous: <a href="{{ page.earlier.permalink }}">{{ page.earlier.title }}</a></li>
+    {% if page.lower %}
+        <li>Previous: <a href="{{ page.lower.permalink }}">{{ page.lower.title }}</a></li>
     {% endif %}
 </ul>
 
